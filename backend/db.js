@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -11,11 +11,12 @@ mongoose.connect(process.env.MONGO_URI)
     console.log(err);
 })
 
-const todoSchema = new mongoose.Schema({
-    type:String,
-    require : true
-})
+const toDoSchema = new mongoose.Schema({
+    toDo: String
+});
 
-const ToDo = mongoose.model("ToDo" , todoSchema )
 
-module.exports = ToDo ;
+
+const ToDo = mongoose.model("todo" , toDoSchema  )
+
+export { ToDo };
