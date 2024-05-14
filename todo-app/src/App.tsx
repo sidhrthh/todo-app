@@ -9,8 +9,8 @@ function App() {
   const [input, setInput] = useState("")
   const [toDos, setToDos] = useState([]);
   const [updateUI, setUpdateUI] = useState(false)
-  const [showPopup , setShowPopup] = useState(false)
-  const [popupContent, setPopupContent] = useState<{text? : string , id? : string } > ({});
+  const [showPopup, setShowPopup] = useState(false)
+  const [popupContent, setPopupContent] = useState<{ text?: string, id?: string }>({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,53 +40,53 @@ function App() {
 
 
   return (
-    <div className='flex justify-center items-center flex-col '>
-      <div>
-        <h1 className='text-2xl mb-3'>To do App</h1>
+    <div >
+      <div className='flex justify-center items-center flex-col'>
         <div>
-          <input
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value)
-            }}
-            className='border-2 border-gray p-2 text-center mr-2'
-            type="text"
-            placeholder='Add a todo...'
-          />
-          <button
-            className='border-2 bg-slate-500 text-white p-2 rounded'
-            onClick={addTodo}
-          >Add</button>
+          <h1 className='text-4xl mt-10 mb-5 font-extrabold	'>Tasks:</h1>
+          <div>
+            <input
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value)
+              }}
+              className='border-2 border-gray p-2 text-center mr-2'
+              type="text"
+              placeholder='Add a todo...'
+            />
+            <button
+              className='border-2 bg-slate-500 text-white p-2 rounded'
+              onClick={addTodo}
+            >Add</button>
+          </div>
+
+<div className='border-b border-grey mt-3 mb-3'></div>
+
         </div>
-      </div>
 
-      {/* Todo comoponent */}
-      <div className='list'>
-        {toDos.map((el: any) =>
-          <ToDo
-            key={el._id}
-            text={el.toDo}
-            id={el._id}
-            setUpdateUI={setUpdateUI}
+        {/* Todo comoponent */}
+        <div className='list w-1/2'>
+          {toDos.map((el: any) =>
+            <ToDo
+              key={el._id}
+              text={el.toDo}
+              id={el._id}
+              setUpdateUI={setUpdateUI}
+              setShowPopup={setShowPopup}
+              setPopupContent={setPopupContent}
+            />
+          )}
+        </div>
+
+        {/* PopUp Component */}
+        {showPopup &&
+          <Popup
             setShowPopup={setShowPopup}
-            setPopupContent={setPopupContent}
+            popupContent={popupContent ? popupContent : { text: "", id: "" }}
+            setUpdateUI={setUpdateUI}
           />
-        )}
+        }
       </div>
-
-      {/* PopUp Component */}
-      {showPopup && 
-    <Popup
-        setShowPopup={setShowPopup}
-        popupContent={popupContent ? popupContent : { text: "", id: "" }}
-        setUpdateUI={setUpdateUI} 
-    />
-}
-
-
-
-
-
     </div>
   );
 }

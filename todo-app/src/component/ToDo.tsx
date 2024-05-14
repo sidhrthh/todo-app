@@ -32,7 +32,7 @@ export const ToDo: React.FC<TodoProps> = ({text , id , setUpdateUI, setShowPopup
     
     
     return (
-        <div className="border-2 mb-2 p-2 flex justify-between w-1/2">
+        <div className="border mb-2 p-2 flex justify-between">
             <div>
                 {text}
             </div>
