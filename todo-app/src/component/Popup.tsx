@@ -4,8 +4,8 @@ import axios from "axios";
 interface PopupProps {
     setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
     popupContent?: {
-        text: string;
-        id: string;
+        text?: string;
+        id?: string;
     };
     setUpdateUI: React.Dispatch<React.SetStateAction<boolean>>;
 }

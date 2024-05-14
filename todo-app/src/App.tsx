@@ -10,7 +10,7 @@ function App() {
   const [toDos, setToDos] = useState([]);
   const [updateUI, setUpdateUI] = useState(false)
   const [showPopup , setShowPopup] = useState(false)
-  const [popupContent, setPopupContent] = useState({});
+  const [popupContent, setPopupContent] = useState<{text? : string , id? : string } > ({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,7 +78,7 @@ function App() {
       {showPopup && 
     <Popup
         setShowPopup={setShowPopup}
-        popupContent={popupContent ? popupContent : { text: '', id: '' }} // Provide default value if popupContent is undefined
+        popupContent={popupContent ? popupContent : { text: "", id: "" }}
         setUpdateUI={setUpdateUI} 
     />
 }
